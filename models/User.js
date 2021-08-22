@@ -1,5 +1,4 @@
-const { Sequelize } = require("sequelize");
-require("dotenv").config(); // npm i dotenv
+const { Sequelize, DataTypes } = require("sequelize");
 
 //connect to db
 //postgres://username:password@<hostname>:5432/dbname
@@ -19,5 +18,24 @@ sequelize
   })
   .finally();
 
+//modelname, attribute, options
+ const UserModel = sequelize.define(
+    "recruiters",
+ {
+     //attribute
+     //id, firstName, lastName, createdAt, updatedAt
+     firstName:{
+         type: DataTypes.STRING, 
+         allowNull:false,
+     },
+     lastName:{
+        type: DataTypes.STRING, 
+        allowNull:false,
+     }
+ },
+ {
+     //options
+      freezeTableName:true  // => tablo ismini değiştirmeye gerek kalmıyor. Default olarak tablo ismini "sequelize" çogul olarak kullanıyor
+ })
 
-Sequelize.define()
+ module.exports = UserModel;

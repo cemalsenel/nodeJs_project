@@ -11,23 +11,25 @@ var usersRouter = require("./routes/users");
 
 var app = express();
 
+require("./models/User")
+
 //connect to db
 //postgres://username:password@<hostname>:5432/dbname
-const { DB_USERNAME, DB_PASSWORD, DB_HOSTNAME, DB_PORT, DB_NAME } = process.env;
+// const { DB_USERNAME, DB_PASSWORD, DB_HOSTNAME, DB_PORT, DB_NAME } = process.env; ==> modals.User dan bağlantı oluştu
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}`
-);
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}`
+// );
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Successfully connected to database");
-  })
-  .catch((err) => {
-    console.log("Unable to connect to database", err);
-  })
-  .finally();
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log("Successfully connected to database");
+//   })
+//   .catch((err) => {
+//     console.log("Unable to connect to database", err);
+//   })
+//   .finally();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
